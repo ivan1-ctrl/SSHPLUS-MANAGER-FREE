@@ -1,54 +1,52 @@
 #!/bin/bash
 #====================================================
-#	SCRIPT: CONEXAO SSHPLUS MANAGER
-#	DESENVOLVIDO POR:	CRAZY_VPN
-#	DATA ATUALIZACAO:	28-04-2021 
-#	CONTATO TELEGRAM:	http://t.me/crazy_vpn
-#	CANAL TELEGRAM:	http://t.me/sshplus
+#   SCRIPT: SSHPLUS MANAGER CONNECTION
+#   DEVELOPED BY: CRAZY_VPN
+#   LAST UPDATED:   28-04-2021 
+#   CONTACT TELEGRAM:   http://t.me/crazy_vpn
+#   TELEGRAM CHANNEL:   http://t.me/sshplus
 #====================================================
 [[ $(awk -F" " '{print $2}' /usr/lib/licence) == "@CRAZY_VPN" ]] && {
-	ram1=$(free -h | grep -i mem | awk {'print $2'})
-	ram2=$(free -h | grep -i mem | awk {'print $4'})
-	ram3=$(free -h | grep -i mem | awk {'print $3'})
-	uso=$(top -bn1 | awk '/Cpu/ { cpu = "" 100 - $8 "%" }; END { print cpu }')
-	system=$(cat /etc/issue.net)
-	fun_bar() {
-		comando[0]="$1"
-		comando[1]="$2"
-		(
-			[[ -e $HOME/fim ]] && rm $HOME/fim
-			[[ ! -d /etc/SSHPlus ]] && rm -rf /bin/menu
-			${comando[0]} >/dev/null 2>&1
-			${comando[1]} >/dev/null 2>&1
-			touch $HOME/fim
-		) >/dev/null 2>&1 &
-		tput civis
-		echo -ne "\033[1;33mAGUARDE \033[1;37m- \033[1;33m["
-		while true; do
-			for ((i = 0; i < 18; i++)); do
-				echo -ne "\033[1;31m#"
-				sleep 0.1s
-			done
-			[[ -e $HOME/fim ]] && rm $HOME/fim && break
-			echo -e "\033[1;33m]"
-			sleep 1s
-			tput cuu1
-			tput dl1
-			echo -ne "\033[1;33mAGUARDE \033[1;37m- \033[1;33m["
-		done
-		echo -e "\033[1;33m]\033[1;37m -\033[1;32m OK !\033[1;37m"
-		tput cnorm
-	}
+    ram1=$(free -h | grep -i mem | awk {'print $2'})
+    ram2=$(free -h | grep -i mem | awk {'print $4'})
+    ram3=$(free -h | grep -i mem | awk {'print $3'})
+    usage=$(top -bn1 | awk '/Cpu/ { cpu = "" 100 - $8 "%" }; END { print cpu }')
+    system=$(cat /etc/issue.net)
+    fun_bar() {
+        comando[0]="$1"
+        comando[1]="$2"
+        (
+            [[ -e $HOME/fim ]] && rm $HOME/fim
+            [[ ! -d /etc/SSHPlus ]] && rm -rf /bin/menu
+            ${comando[0]} >/dev/null 2>&1
+            ${comando[1]} >/dev/null 2>&1
+            touch $HOME/fim
+        ) >/dev/null 2>&1 &
+        tput civis
+        echo -ne "\033[1;33mPLEASE WAIT \033[1;37m- \033[1;33m["
+        while true; do
+            for ((i = 0; i < 18; i++)); do
+                echo -ne "\033[1;31m#"
+                sleep 0.1s
+            done
+            [[ -e $HOME/fim ]] && rm $HOME/fim && break
+            echo -e "\033[1;33m]"
+            sleep 1s
+            tput cuu1
+            tput dl1
+            echo -ne "\033[1;33mPLEASE WAIT \033[1;37m- \033[1;33m["
+        done
+        echo -e "\033[1;33m]\033[1;37m -\033[1;32m OK!\033[1;37m"
+        tput cnorm
+    }
 
-	verif_ptrs() {
-		porta=$1
-		PT=$(lsof -V -i tcp -P -n | grep -v "ESTABLISHED" | grep -v "COMMAND" | grep "LISTEN")
-		for pton in $(echo -e "$PT" | cut -d: -f2 | cut -d' ' -f1 | uniq); do
-			svcs=$(echo -e "$PT" | grep -w "$pton" | awk '{print $1}' | uniq)
-			[[ "$porta" = "$pton" ]] && {
-				echo -e "\n\033[1;31mPORTA \033[1;33m$porta \033[1;31mEM USO PELO \033[1;37m$svcs\033[0m"
-				sleep 3
-				fun_conexao
+    verify_ports() {
+        port=$1
+        PT=$(lsof -V -i tcp -P -n | grep -v "ESTABLISHED" | grep -v "COMMAND" | grep "LISTEN")
+        for pton in $(echo -e "$PT" | cut -d: -f2 | cut -d' ' -f1 | uniq); do
+            svcs=$(echo -e "$PT" | grep -w "$pton" | awk '{print $1}' | uniq)
+            [[ "$port" = "$pton" ]] && {
+                echo -e "\n\033[_{{{CITATION{{{_1{](https://github.com/AAAAAEXQOSyIpN2JZ0ehUQ/ADM-ULTIMATE-NEW-FREE/tree/fa85a89fc81c55762f2ca7302991db00e301c4fd/Install%2FHerramientas%2Fconexao.sh)[_{{{CITATION{{{_2{](https://github.com/binnh2002/controlssh/tree/4fb8d5ff440ccfa451174d1770e667dbcf068c11/_$_Version%2FSSHPLUS%20v29%2FModulos%2Fconexao.sh)[_{{{CITATION{{{_3{](https://github.com/shashikacineru/ssh-server/tree/52acdee7467ecff7f45e48a1cc8007a861d5f6a4/_$_Version%2FSSHPLUS%20v21%2FModulos%2Fotimizar.sh)[_{{{CITATION{{{_4{](https://github.com/CrxCode/SSHMANAGER/tree/5e53d236dbc865e04f4c5fb6e4495620cc8a8407/Modulos%2Fconexao.sh)[_{{{CITATION{{{_5{](https://github.com/binnh2002/sshpanel/tree/ede3a5dfb9c518383ce68ce2548ebf3eafb15a47/_$_Version%2FSSHPLUS%20v21%20Update%2FModulos%2Fmenu.sh)[_{{{CITATION{{{_6{](https://github.com/AAAAAEXQOSyIpN2JZ0ehUQ/ADM-ULTIMATE-NEW-FREE/tree/fa85a89fc81c55762f2ca7302991db00e301c4fd/request%2Fsslh%20-%20copia.sh)
 			}
 		done
 	}
